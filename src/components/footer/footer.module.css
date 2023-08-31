@@ -1,0 +1,19 @@
+.container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.link_container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.icon {
+  opacity: 0.95;
+}
