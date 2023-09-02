@@ -6,7 +6,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className={styles.container}>
-      <div>&copy;Copyright 2023 Melodean. All Rights Reserved</div>
+      <div>&copy;Copyright 2023 Renesdwir. All Rights Reserved</div>
       <Link
         href={"https://saweria.co/supportdeveloper"}
         target="_blank"
