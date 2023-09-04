@@ -29,6 +29,9 @@
   color: white;
   width: max-content;
 }
+.button:hover {
+  background-color: #419a6d;
+}
 .img {
   width: 100%;
   height: 470px;
