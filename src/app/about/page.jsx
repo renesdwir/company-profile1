@@ -26,9 +26,11 @@ const About = () => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi
             expedita cupiditate alias cum est, fugit odio voluptate rerum sit
             explicabo possimus vel autem atque earum quo ratione, architecto ea
-            corporis odit deserunt numquam veniam ullam ex? <br />
-            <br /> Odit culpa praesentium dolorum aperiam delectus blanditiis,
-            numquam tenetur placeat, alias dolor odio tempore!
+            corporis odit deserunt numquam veniam ullam ex?
+            <br />
+            <br />
+            Odit culpa praesentium dolorum aperiam delectus blanditiis, numquam
+            tenetur placeat, alias dolor odio tempore!
           </p>
         </div>
         <div className={styles.item}>
@@ -40,8 +42,12 @@ const About = () => {
             corporis odit deserunt numquam veniam ullam ex? Odit culpa
             praesentium dolorum aperiam delectus blanditiis, numquam tenetur
             placeat, alias dolor odio tempore!
-            <br />- Creative Illustration - Dynamic Website - Fast and Handy
-            Mobile
+            <br />
+            <br />- Creative Illustration
+            <br />
+            <br />- Dynamic Website
+            <br />
+            <br />- Fast and Handy Mobile
           </p>
           <Button url={"/contact"} text={"Contact"} />
         </div>
