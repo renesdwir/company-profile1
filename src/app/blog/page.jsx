@@ -12,30 +12,26 @@ async function getData() {
   return res.json();
 }
 const Blog = async () => {
-  const data = await getData();
-  console.log(data);
+  const datas = await getData();
   return (
     <div className={styles.mainContainer}>
-      <Link href="/blog/testId" className={styles.container}>
-        <div className={styles.imageContainer}>
-          <Image
-            src="https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"
-            alt=""
-            width={400}
-            height={250}
-            className={styles.image}
-          />
-        </div>
-        <div className={styles.content}>
-          <h1 className={styles.title}>Lorem ipsum dolor sit amet.</h1>
-          <p className={styles.desc}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti
-            ex ratione laborum laudantium! Nobis omnis, unde dolorem quaerat
-            illum provident, cumque dolore reiciendis vero corporis sapiente
-            modi eaque sunt magnam.
-          </p>
-        </div>
-      </Link>
+      {datas.map((data) => (
+        <Link key={data.id} href="/blog/testId" className={styles.container}>
+          <div className={styles.imageContainer}>
+            <Image
+              src={data.image}
+              alt=""
+              width={400}
+              height={250}
+              className={styles.image}
+            />
+          </div>
+          <div className={styles.content}>
+            <h1 className={styles.title}>{data.title}</h1>
+            <p className={styles.desc}>{data.description}</p>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
