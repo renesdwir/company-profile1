@@ -2,6 +2,10 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Button from "@/components/button/button";
+export const metadata = {
+  title: "R-Company | Contact",
+  description: "This is Contact Page",
+};
 const Contact = () => {
   return (
     <div className={styles.container}>
