@@ -1,58 +1,49 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
+import { notFound } from "next/navigation";
 
-const BlogPost = () => {
+async function getData(id) {
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    return notFound();
+  }
+  return res.json();
+}
+export async function generateMetadata({ params }) {
+  const post = await getData(params.id);
+  return {
+    title: "R-Company | " + post.title,
+    description: post.description,
+  };
+}
+const BlogPost = async ({ params }) => {
+  const data = await getData(params.id);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.info}>
-          <h1 className={styles.title}>Title</h1>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis enim,
-            excepturi praesentium quia nulla repellendus! Eius quasi non maxime
-            vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Officia exercitationem maiores nemo corrupti vel perspiciatis magni
-            necessitatibus nostrum tempora ipsum!
-          </p>
+          <h1 className={styles.title}>{data.title}</h1>
+          <p className={styles.desc}>{data.styles}</p>
           <div className={styles.author}>
             <Image
-              src={
-                "https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"
-              }
+              src={data.image}
               alt=""
               width={40}
               height={40}
               className={styles.avatar}
             />
-            <span className={styles.username}>Jhon Doe</span>
+            <span className={styles.username}>{data.username}</span>
           </div>
         </div>
         <div className={styles.imageContainer}>
-          <Image
-            src={
-              "https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"
-            }
-            alt=""
-            fill={true}
-            className={styles.image}
-          />
+          <Image src={data.image} alt="" fill={true} className={styles.image} />
         </div>
       </div>
       <div className={styles.content}>
-        <p className={styles.text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-          sequi. Reiciendis quam, repudiandae officiis non iusto neque alias
-          quasi aliquam maiores error minima dolorem sapiente libero amet nisi
-          dicta necessitatibus sed dolorum et tempore a asperiores quidem?
-          Porro, fuga libero? Et, cumque. Eum earum consequatur ipsum corporis
-          dignissimos nobis et! Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Quaerat accusamus adipisci, optio harum, impedit
-          molestias vel repellat enim quas similique quae voluptas veniam.
-          Omnis, perspiciatis nesciunt? Adipisci accusamus cum, rem officia at
-          exercitationem similique excepturi facilis impedit ex iusto ipsum
-          illum saepe dolore voluptatum? Provident velit eius porro quod vitae!
-        </p>
+        <p className={styles.text}>{data.content}</p>
       </div>
     </div>
   );
