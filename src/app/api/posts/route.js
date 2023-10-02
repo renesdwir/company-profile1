@@ -10,7 +10,6 @@ export const GET = async (req) => {
     const posts = await Post.find(username && { username });
     return new NextResponse(JSON.stringify(posts), { status: 200 });
   } catch (error) {
-    console.log(error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 };
@@ -23,7 +22,6 @@ export const POST = async (req) => {
     await newPost.save();
     return new NextResponse("Post has been created!", { status: 201 });
   } catch (error) {
-    console.log(error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 };
